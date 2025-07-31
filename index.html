@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita Sekolah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+
+        .read-more-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .main-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="page-title">Berita Sekolah</h1>
+        
+        <div class="articles-grid">
+            <!-- Artikel 1: Penutupan MPLS -->
+            <div class="container">
+                <div class="image-container">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNfdtX_GJyl7p0opzGhPleh0MaGWKS_qdQnhQq3QT5Ll6v9i-4k_peu69HfVYxm_7aUnIoWLXnYL4-QfKCPE9KWKrWwtu0Kcp7I-jOcFhJ19SvJ5dvDWpCsumwrOAolfR-8GHS-RSqZjFjOZoclpUDrhQ=w1640-h923-s-no-gm?authuser=0" 
+                         alt="Penutupan Kegiatan Masa Pengenalan Lingkungan Sekolah" 
+                         class="main-image">
+                </div>
+                <div class="content">
+                    <h2 class="title">Penutupan Kegiatan Masa Pengenalan Lingkungan Sekolah</h2>
+                    <a href="https://smpn4mendoyo.sch.id/berita-penutupanmpls2025.php" 
+                       target="_blank" 
+                       class="read-more-btn">
+                       Baca Selengkapnya
+                    </a>
+                </div>
+            </div>
+
+            <!-- Artikel 2: Museum Keliling -->
+            <div class="container">
+                <div class="image-container">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNSCaEV7OMyZupin-0iVDe91olkoR1OvrcsLGVShEXaIMoHk1d3xL9ZlSOrT4A5ZOxtiQ6w5V3XFkwIsHO6xBLLJgZTBfMYjEf-3zE_iTOqWfIfVyEI-1eEl3Zg3jhUUtn9rVJ40WVi6L2VI6ZzP6C_=w1230-h923-s-no-gm?authuser=0" 
+                         alt="Museum Keliling UPTD. Provinsi Bali" 
+                         class="main-image">
+                </div>
+                <div class="content">
+                    <div class="date">Rabu, 30 Juli 2025</div>
+                    <h2 class="title">Museum Keliling UPTD. Provinsi Bali</h2>
+                    <a href="https://smpn4mendoyo.sch.id/berita-penutupanmpls2025.php" 
+                       target="_blank" 
+                       class="read-more-btn">
+                       Baca Selengkapnya
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
