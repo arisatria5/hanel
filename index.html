@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Berita Terkini</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-newspaper"></i>
+                    <h1>Portal Berita</h1>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-category="all">Semua</a></li>
+                        <li><a href="#" class="nav-link" data-category="teknologi">Teknologi</a></li>
+                        <li><a href="#" class="nav-link" data-category="olahraga">Olahraga</a></li>
+                        <li><a href="#" class="nav-link" data-category="politik">Politik</a></li>
+                        <li><a href="#" class="nav-link" data-category="ekonomi">Ekonomi</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="hero-section">
+                <h2>Berita Terkini Hari Ini</h2>
+                <p>Dapatkan informasi terbaru dan terpercaya dari berbagai sumber</p>
+            </section>
+
+            <section class="news-section">
+                <div class="news-grid" id="newsGrid">
+                    <!-- News articles will be dynamically inserted here -->
+                </div>
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Memuat berita...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portal Berita</h3>
+                    <p>Sumber berita terpercaya dengan informasi terkini dari seluruh dunia.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kategori</h4>
+                    <ul>
+                        <li><a href="#">Teknologi</a></li>
+                        <li><a href="#">Olahraga</a></li>
+                        <li><a href="#">Politik</a></li>
+                        <li><a href="#">Ekonomi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@portalberita.com</li>
+                        <li><i class="fas fa-phone"></i> +62 21 1234 5678</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portal Berita. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
