@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi SMP Negeri 4 Mendoyo - smpn4mendoyo.sch.id</title>
+    <meta name="description" content="Website resmi SMP Negeri 4 Mendoyo, Tegalcangkring, Mendoyo, Jembrana, Bali. Informasi sekolah, profil, berita, dan kegiatan sekolah.">
+    <meta name="keywords" content="SMP Negeri 4 Mendoyo, SMPN 4 Mendoyo, sekolah menengah pertama, Jembrana, Bali, pendidikan">
+    <meta name="author" content="SMP Negeri 4 Mendoyo">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://smpn4mendoyo.sch.id/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/pw/AP1GczPKxLMdXqBxEZtOFMr_tXs_1EnSY8IqxIBjTob9OsPIgQW0x-ABBoLyNv3BtITyjPINTw3KWQLgFUANmArFYgCkliVx9zp_RA6Rxqp_lChVzo4Qbd3G98ezFl1rNePybvglbWP-7M5_aMfcqnWrAF3gjg=w923-h923-s-no-gm?authuser=0">
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/pw/AP1GczPKxLMdXqBxEZtOFMr_tXs_1EnSY8IqxIBjTob9OsPIgQW0x-ABBoLyNv3BtITyjPINTw3KWQLgFUANmArFYgCkliVx9zp_RA6Rxqp_lChVzo4Qbd3G98ezFl1rNePybvglbWP-7M5_aMfcqnWrAF3gjg=w923-h923-s-no-gm?authuser=0">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Font Configuration */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e5e7eb 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            animation: bounce 0.8s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        
+        .loading-text {
+            color: #374151;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .loading-subtitle {
+            color: #6B7280;
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        .main-content.show {
+            opacity: 1;
+        }
+
+        /* Navigation Styles */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .desktop-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .desktop-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Hover effects for desktop */
+        @media (min-width: 768px) {
+            .nav-item:hover .desktop-dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Dropdown Animations */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .submenu.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        /* Utility Classes */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Form Elements */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        /* Animations */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .animate-marquee {
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-transition {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(rgba(239, 68, 68, 0.7), rgba(255, 255, 255, 0.7)), url('https://lh3.googleusercontent.com/pw/AP1GczNtLnoKzpHauGKB2KuZ_ZTUHBlp9yhGaStRQ8FbtA-5rmL-Z1DPixVy3bbQ44PxqzFbRlVHjmxLQmaXKDTq4U5vsSDMZYlDnkClTvs89vbljUX3PxQyucXrGn1IeguQDLvRqgs-lyd0MoZMZyY82Nvasw=w1640-h923-s-no-gm?authuser=0');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger-line {
+                transition: all 0.3s ease;
+                transform-origin: center;
+            }
+            
+            .hamburger-active .line1 {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            
+            .hamburger-active .line2 {
+                opacity: 0;
+            }
+            
+            .hamburger-active .line3 {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="logo-container">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczPKxLMdXqBxEZtOFMr_tXs_1EnSY8IqxIBjTob9OsPIgQW0x-ABBoLyNv3BtITyjPINTw3KWQLgFUANmArFYgCkliVx9zp_RA6Rxqp_lChVzo4Qbd3G98ezFl1rNePybvglbWP-7M5_aMfcqnWrAF3gjg=w923-h923-s-no-gm?authuser=0" alt="Logo SMP Negeri 4 Mendoyo" class="loading-logo">
+        </div>
+        <div class="loading-text">SMP Negeri 4 Mendoyo</div>
+        <div class="loading-subtitle">Memuat website...</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="main-content">
+        <!-- Header -->
+        <header class="bg-white shadow-lg sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center justify-between py-4">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-3">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczPKxLMdXqBxEZtOFMr_tXs_1EnSY8IqxIBjTob9OsPIgQW0x-ABBoLyNv3BtITyjPINTw3KWQLgFUANmArFYgCkliVx9zp_RA6Rxqp_lChVzo4Qbd3G98ezFl1rNePybvglbWP-7M5_aMfcqnWrAF3gjg=w923-h923-s-no-gm?authuser=0" 
+                             alt="Logo SMP Negeri 4 Mendoyo" 
+                             class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-800">SMP Negeri 4 Mendoyo</h1>
+                            <p class="text-xs text-gray-500">Kelurahan Tegalcangkring, Mendoyo, Jembrana - Bali</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Desktop Menu -->
+                    <nav class="flex items-center space-x-8">
+                        <a href="https://smpn4mendoyo.sch.id/" class="text-gray-700 hover:text-yellow-600 font-bold transition-colors">
+                            <span>BERANDA</span>
+                        </a>
+                        <a href="https://smpn4mendoyo.sch.id/profil" class="text-gray-700 hover:text-yellow-600 font-bold transition-colors">
+                            <span>PROFIL</span>
+                        </a>                    
+                        <a href="https://smpn4mendoyo.sch.id/event" class="text-gray-700 hover:text-yellow-600 font-bold transition-colors">
+                            <span>EVENT</span>
+                        </a>
+                        
+                        <!-- Data Dropdown -->
+                        <div class="relative nav-item">
+                            <button class="text-gray-700 hover:text-yellow-600 font-bold transition-colors flex items-center space-x-2">
+                                <span>DATA</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            
+                            <div class="desktop-dropdown absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border py-2">
+                                <a href="https://smpn4mendoyo.sch.id/tenaga-pendidik" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Tenaga Pendidik</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/tenaga-kependidikan" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Tenaga Kependidikan</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Kurikulum Dropdown -->
+                        <div class="relative nav-item">
+                            <button class="text-gray-700 hover:text-yellow-600 font-bold transition-colors flex items-center space-x-2">
+                                <span>KURIKULUM</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            
+                            <div class="desktop-dropdown absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border py-2">
+                                <a href="https://smpn4mendoyo.sch.id/jadwal-kelas" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Jadwal Mapel Kelas</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/jadwal-guru" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Jadwal Mapel Guru</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/jadwal-global" class="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Jadwal Global</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Berita Dropdown -->
+                        <div class="relative nav-item">
+                            <button class="text-gray-700 hover:text-yellow-600 font-bold transition-colors flex items-center space-x-2">
+                                <span>BERITA</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            
+                            <div class="desktop-dropdown absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border py-2">
+                                <a href="https://smpn4mendoyo.sch.id/berita/penutupan-mpls-2025" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Penutupan MPLS 2025</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/berita/bantuan-mpls-ramah-2025" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Bantuan MPLS Ramah 2025</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/berita/kegiatan-mpls-2025" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Kegiatan MPLS 2025</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- OSIS Dropdown -->
+                        <div class="relative nav-item">
+                            <button class="text-gray-700 hover:text-yellow-600 font-bold transition-colors flex items-center space-x-2">
+                                <span>OSIS</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            
+                            <div class="desktop-dropdown absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border py-2">
+                                <a href="https://smpn4mendoyo.sch.id/osis/arsip-2023" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Arsip 2023</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/osis/arsip-2024" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Arsip 2024</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://smpn4mendoyo.sch.id/osis/arsip-2025" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                    <div class="flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-medium">Arsip 2025</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                
+                <!-- Mobile Navigation -->
+                <div class="md:hidden flex items-center justify-between py-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczPKxLMdXqBxEZtOFMr_tXs_1EnSY8IqxIBjTob9OsPIgQW0x-ABBoLyNv3BtITyjPINTw3KWQLgFUANmArFYgCkliVx9zp_RA6Rxqp_lChVzo4Qbd3G98ezFl1rNePybvglbWP-7M5_aMfcqnWrAF3gjg=w923-h923-s-no-gm?authuser=0" 
+                             alt="Logo SMP Negeri 4 Mendoyo" 
+                             class="w-8 h-8 rounded-full object-cover">
+                        <div>
+                            <h1 class="text-lg font-bold text-gray-800">SMP Negeri 4 Mendoyo</h1>
+                            <p class="text-xs text-gray-500">Tegalcangkring, Mendoyo, Jembrana</p>
+                        </div>
+                    </div>
+                    <button id="menuToggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t">
+            <div class="px-4">
+                <nav class="py-2">
+                    <!-- Home -->
+                    <a href="https://smpn4mendoyo.sch.id/" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium rounded-lg">
+                        <span>🏠 Beranda</span>
+                    </a>
+                    <a href="https://smpn4mendoyo.sch.id/profil" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium rounded-lg">
+                        <span>👤 Profil</span>
+                    </a>
+                    <a href="https://smpn4mendoyo.sch.id/event" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium rounded-lg">
+                        <span>📰 Event</span>
+                    </a>
+
+                    <!-- Data Dropdown -->
+                    <div class="relative">
+                        <button id="dataToggle" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium flex items-center justify-between rounded-lg">
+                            <span>📊 Data</span>
+                            <svg id="dataArrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div id="dataDropdown" class="hidden bg-gray-50 rounded-lg mt-2 ml-4 border-l-4 border-yellow-500">
+                            <a href="https://smpn4mendoyo.sch.id/tenaga-pendidik" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Tenaga Pendidik</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/tenaga-kependidikan" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Tenaga Kependidikan</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Kurikulum Dropdown -->
+                    <div class="relative">
+                        <button id="kurikulumToggle" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium flex items-center justify-between rounded-lg">
+                            <span>📚 Kurikulum</span>
+                            <svg id="kurikulumArrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div id="kurikulumDropdown" class="hidden bg-gray-50 rounded-lg mt-2 ml-4 border-l-4 border-yellow-500">
+                            <a href="https://smpn4mendoyo.sch.id/jadwal-kelas" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Jadwal Mapel Kelas</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/jadwal-guru" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Jadwal Mapel Pengajar</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/jadwal-global" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Jadwal Global</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Berita Dropdown -->
+                    <div class="relative">
+                        <button id="beritaToggle" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium flex items-center justify-between rounded-lg">
+                            <span>📰 Berita</span>
+                            <svg id="beritaArrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div id="beritaDropdown" class="hidden bg-gray-50 rounded-lg mt-2 ml-4 border-l-4 border-yellow-500">
+                            <a href="https://smpn4mendoyo.sch.id/berita/penutupan-mpls-2025" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Penutupan MPLS 2025</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/berita/bantuan-mpls-ramah-2025" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Bantuan MPLS Ramah 2025</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/berita/kegiatan-mpls-2025" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Kegiatan MPLS 2025</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- OSIS Dropdown -->
+                    <div class="relative">
+                        <button id="osisToggle" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium flex items-center justify-between rounded-lg">
+                            <span>🏫 OSIS</span>
+                            <svg id="osisArrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div id="osisDropdown" class="hidden bg-gray-50 rounded-lg mt-2 ml-4 border-l-4 border-yellow-500">
+                            <a href="https://smpn4mendoyo.sch.id/osis/arsip-2025" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Arsip OSIS 2025</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/osis/arsip-2024" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Arsip OSIS 2024</span>
+                            </a>
+                            <a href="https://smpn4mendoyo.sch.id/osis/arsip-2023" class="block px-8 py-3 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 transition-colors rounded-lg">
+                                <span>Arsip OSIS 2023</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        // Dropdown toggles
+        const dataToggle = document.getElementById('dataToggle');
+        const dataDropdown = document.getElementById('dataDropdown');
+        const dataArrow = document.getElementById('dataArrow');
+
+        const beritaToggle = document.getElementById('beritaToggle');
+        const beritaDropdown = document.getElementById('beritaDropdown');
+        const beritaArrow = document.getElementById('beritaArrow');
+
+        const kurikulumToggle = document.getElementById('kurikulumToggle');
+        const kurikulumDropdown = document.getElementById('kurikulumDropdown');
+        const kurikulumArrow = document.getElementById('kurikulumArrow');
+
+        const osisToggle = document.getElementById('osisToggle');
+        const osisDropdown = document.getElementById('osisDropdown');
+        const osisArrow = document.getElementById('osisArrow');
+
+        // Toggle main mobile menu
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Helper function to close all dropdowns
+        function closeAllDropdowns() {
+            [dataDropdown, beritaDropdown, kurikulumDropdown, osisDropdown].forEach(dropdown => {
+                dropdown.classList.add('hidden');
+            });
+            [dataArrow, beritaArrow, kurikulumArrow, osisArrow].forEach(arrow => {
+                arrow.style.transform = 'rotate(0deg)';
+            });
+        }
+
+        // Toggle dropdown functions
+        function toggleDropdown(dropdown, arrow) {
+            const isHidden = dropdown.classList.contains('hidden');
+            
+            // Close all other dropdowns first
+            closeAllDropdowns();
+            
+            // Toggle current dropdown
+            if (isHidden) {
+                dropdown.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Event listeners for dropdowns
+        dataToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDropdown(dataDropdown, dataArrow);
+        });
+
+        beritaToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDropdown(beritaDropdown, beritaArrow);
+        });
+
+        kurikulumToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDropdown(kurikulumDropdown, kurikulumArrow);
+        });
+
+        osisToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDropdown(osisDropdown, osisArrow);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#mobileMenu') && !e.target.closest('#menuToggle')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Close dropdowns when clicking menu items (mobile)
+        document.querySelectorAll('#beritaDropdown a, #dataDropdown a, #kurikulumDropdown a, #osisDropdown a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeAllDropdowns();
+            });
+        });
+
+        // Desktop dropdown functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            const dropdown = item.querySelector('.desktop-dropdown');
+            let hoverTimeout;
+            
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(hoverTimeout);
+                dropdown.classList.add('show');
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                hoverTimeout = setTimeout(() => {
+                    dropdown.classList.remove('show');
+                }, 150);
+            });
+        });
+
+        // Loading screen functionality
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                const mainContent = document.getElementById('mainContent');
+                
+                loadingScreen.classList.add('fade-out');
+                mainContent.classList.add('show');
+                
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+
+        // Tailwind configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#555f60',
+                            light: '#6d7778',
+                            dark: '#3e4546',
+                        },
+                        accent: {
+                            DEFAULT: '#7a9ca5',
+                            light: '#a3c2ca',
+                            dark: '#557680',
+                        },
+                        highlight: {
+                            DEFAULT: '#8fb9a8',
+                            light: '#b0d0c4',
+                            dark: '#6e9483',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
